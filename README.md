@@ -1,25 +1,22 @@
 # Heritage of Bengal — বাংলাদেশের ঐতিহাসিক স্থান
 
-A static website showcasing 8 historical places of Bangladesh. Originally built with the **Aurora** programming language backend, deployed as a static site on Netlify.
+A web application showcasing 8 historical places of Bangladesh, built with the **Aurora** programming language as the backend server.
 
 ## Languages & Technologies Used
 
 | Language/Tech | Purpose |
 |--------------|---------|
-| **Aurora** | Original backend HTTP server, routing, template compilation & rendering |
-| **HTML** | 12 self-contained page templates (inline CSS, no external deps) |
-| **CSS** | Custom design system — Playfair Display + Inter fonts, Bangladesh heritage colors |
-| **Netlify** | Static hosting with URL redirects |
+| **Aurora** | Backend HTTP server, routing, template compilation & rendering |
+| **HTML** | 12 page templates (index, places, 8 detail pages, about, base) |
+| **CSS** | Inline styles with custom design system (Playfair Display + Inter fonts) |
 
-## Deployment
+## Architecture
 
-### Netlify (Auto-Deploy)
+- **`server.aura`** — Aurora backend: compiles templates, registers 11 GET routes, runs on port 8080
+- **`templates/`** — 12 self-contained HTML files with inline CSS (no external dependencies)
+- **`static/css/style.css`** — Source CSS reference (content inlined into templates)
 
-Connected to GitHub repo — every push to `master` auto-deploys.
-
-**Live URL:** `https://bangladesh-history.netlify.app`
-
-### Local (with Aurora)
+## How to Run
 
 ```bash
 aurorac.exe server.aura
