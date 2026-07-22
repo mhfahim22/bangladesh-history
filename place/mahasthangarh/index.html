@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mahasthangarh - Heritage of Bengal</title>
+  <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary: #006747;
+  --primary-dark: #004d34;
+  --primary-light: #84d7af;
+  --secondary: #da291c;
+  --secondary-light: #ffb4a8;
+  --tertiary: #d4af37;
+  --tertiary-light: #e9c349;
+  --background: #fbfbe2;
+  --surface: #f5f5dc;
+  --surface-dim: #dbdcc3;
+  --surface-container: #efefd7;
+  --surface-container-high: #eaead1;
+  --surface-container-highest: #e4e4cc;
+  --text: #1b1d0e;
+  --text-variant: #3f4943;
+  --text-light: #6f7a72;
+  --white: #ffffff;
+  --outline: #6f7a72;
+  --outline-variant: #bec9c1;
+  --border-brass: 1px solid var(--tertiary);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.08);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.1);
+  --shadow-lg: 0 8px 30px rgba(0,0,0,0.12);
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+  --radius-sm: 0.125rem;
+  --radius-md: 0.25rem;
+  --radius-lg: 0.5rem;
+  --max-width: 1200px;
+  --gutter: 24px;
+  --section-gap: 80px;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text);
+  background-color: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--primary); text-decoration: none; transition: color 0.2s; }
+a:hover { color: var(--secondary); }
+
+img { max-width: 100%; height: auto; display: block; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* ── Header & Navigation ── */
+.site-header {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+  color: var(--white);
+  padding: 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+}
+
+.site-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--white);
+  letter-spacing: -0.01em;
+}
+
+.site-title a { color: var(--white); }
+.site-title a:hover { color: var(--tertiary-light); }
+
+.site-title .flag { margin-right: 8px; }
+
+.nav-links {
+  display: flex;
+  gap: 32px;
+  list-style: none;
+}
+
+.nav-links a {
+  color: rgba(255,255,255,0.9);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 8px 0;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+  color: var(--tertiary-light);
+  border-bottom-color: var(--tertiary);
+}
+
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--white);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 4px;
+}
+
+/* ── Hero Section ── */
+.hero {
+  background: linear-gradient(135deg, var(--primary-dark) 0%, #002f1e 100%);
+  color: var(--white);
+  padding: 100px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(212,175,55,0.08) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(218,41,28,0.06) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.hero .subtitle {
+  font-size: 1.25rem;
+  opacity: 0.9;
+  max-width: 700px;
+  margin: 0 auto 32px;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+.hero .divider {
+  width: 80px;
+  height: 3px;
+  background: var(--tertiary);
+  margin: 24px auto;
+  border-radius: 2px;
+}
+
+.hero .scroll-hint {
+  margin-top: 48px;
+  font-size: 0.85rem;
+  opacity: 0.6;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+/* ── Section styles ── */
+.section {
+  padding: var(--section-gap) 0;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 12px;
+  color: var(--text);
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  color: var(--text-variant);
+  max-width: 650px;
+  margin-bottom: 48px;
+  line-height: 1.7;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.section-header .divider {
+  width: 60px;
+  height: 2px;
+  background: var(--tertiary);
+  margin: 16px auto;
+}
+
+.section-alt {
+  background: var(--surface-container);
+}
+
+/* ── Featured Places Grid ── */
+.places-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 32px;
+}
+
+.place-card {
+  background: var(--surface);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+  border: 1px solid var(--outline-variant);
+}
+
+.place-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--tertiary);
+}
+
+.place-card .card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  background: var(--surface-dim);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3rem;
+  color: var(--text-light);
+}
+
+.place-card .card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.place-card .card-body {
+  padding: 24px;
+}
+
+.place-card .card-category {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--primary);
+  margin-bottom: 8px;
+}
+
+.place-card .card-title {
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 600;
+  line-height: 1.3;
+  margin-bottom: 8px;
+}
+
+.place-card .card-title a {
+  color: var(--text);
+}
+
+.place-card .card-title a:hover {
+  color: var(--primary);
+}
+
+.place-card .card-meta {
+  font-size: 0.85rem;
+  color: var(--text-light);
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.place-card .card-excerpt {
+  font-size: 0.95rem;
+  color: var(--text-variant);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.place-card .card-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+.place-card .card-link::after {
+  content: ' →';
+  transition: margin-left 0.2s;
+}
+
+.place-card .card-link:hover::after {
+  margin-left: 4px;
+}
+
+/* ── Place Detail Page ── */
+.place-hero {
+  background: var(--primary-dark);
+  color: var(--white);
+  padding: 64px 0;
+  position: relative;
+}
+
+.place-hero .breadcrumb {
+  font-size: 0.85rem;
+  margin-bottom: 16px;
+  opacity: 0.8;
+}
+
+.place-hero .breadcrumb a {
+  color: var(--tertiary-light);
+}
+
+.place-hero h1 {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.place-hero .bn-name {
+  font-size: 1.5rem;
+  opacity: 0.85;
+  font-weight: 400;
+}
+
+.place-hero .place-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.place-hero .meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.place-hero .meta-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+}
+
+.place-hero .meta-value {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.place-content {
+  padding: 48px 0;
+}
+
+.place-content .content-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+}
+
+.place-content .main-text {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-variant);
+}
+
+.place-content .main-text p {
+  margin-bottom: 20px;
+}
+
+.place-content .main-text h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text);
+  margin: 32px 0 12px;
+}
+
+.place-content .main-text h2:first-child {
+  margin-top: 0;
+}
+
+.place-content .info-card {
+  background: var(--surface);
+  border: var(--border-brass);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  position: sticky;
+  top: 100px;
+}
+
+.place-content .info-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-bottom: 16px;
+  color: var(--text);
+}
+
+.place-content .info-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.place-content .info-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--text-variant);
+}
+
+.place-content .info-list .label {
+  font-weight: 600;
+  color: var(--text);
+  min-width: 80px;
+}
+
+/* ── About Page ── */
+.about-content {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.about-content h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.about-content .divider {
+  width: 60px;
+  height: 2px;
+  background: var(--tertiary);
+  margin: 16px 0 32px;
+}
+
+.about-content p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--text-variant);
+  margin-bottom: 20px;
+}
+
+.about-content .sources {
+  background: var(--surface);
+  border: var(--border-brass);
+  border-radius: var(--radius-md);
+  padding: 24px;
+  margin-top: 32px;
+}
+
+.about-content .sources h3 {
+  font-family: var(--font-heading);
+  font-size: 1.15rem;
+  margin-bottom: 12px;
+}
+
+.about-content .sources ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.about-content .sources li::before {
+  content: '◆ ';
+  color: var(--tertiary);
+  font-size: 0.75rem;
+}
+
+/* ── Footer ── */
+.site-footer {
+  background: var(--primary-dark);
+  color: rgba(255,255,255,0.8);
+  padding: 48px 0 24px;
+  margin-top: var(--section-gap);
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 32px;
+}
+
+.footer-brand h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--white);
+  margin-bottom: 12px;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  opacity: 0.8;
+}
+
+.footer-col h4 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--tertiary-light);
+  margin-bottom: 16px;
+}
+
+.footer-col ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-col a {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}
+
+.footer-col a:hover {
+  color: var(--tertiary-light);
+}
+
+.footer-bottom {
+  border-top: 1px solid rgba(255,255,255,0.1);
+  padding-top: 24px;
+  text-align: center;
+  font-size: 0.85rem;
+  opacity: 0.6;
+}
+
+/* ── Utilities ── */
+.text-center { text-align: center; }
+.mt-16 { margin-top: 16px; }
+.mt-32 { margin-top: 32px; }
+.mt-48 { margin-top: 48px; }
+.mb-16 { margin-bottom: 16px; }
+.mb-32 { margin-bottom: 32px; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: var(--radius-md);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--primary-dark);
+  color: var(--white);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--white);
+  border: 2px solid var(--tertiary);
+}
+
+.btn-secondary:hover {
+  background: var(--tertiary);
+  color: var(--primary-dark);
+}
+
+/* ── Page Hero (generic) ── */
+.page-hero {
+  background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+  color: var(--white);
+  padding: 64px 0;
+  text-align: center;
+}
+
+.page-hero h1 {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.page-hero p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+  .place-content .content-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .place-content .info-card {
+    position: static;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero {
+    padding: 64px 0 48px;
+  }
+
+  .nav-links {
+    display: none;
+    position: absolute;
+    top: 72px;
+    left: 0;
+    right: 0;
+    background: var(--primary);
+    flex-direction: column;
+    padding: 16px 24px;
+    gap: 0;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-links a {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .places-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .place-hero h1 {
+    font-size: 2rem;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .site-title {
+    font-size: 1.15rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.75rem;
+  }
+
+  .hero .subtitle {
+    font-size: 1rem;
+  }
+
+  .container {
+    padding: 0 16px;
+  }
+
+  .header-inner {
+    padding: 0 16px;
+  }
+}
+
+</style>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇧🇩</text></svg>">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="site-title">
+        <a href="/bangladesh-history/"><span class="flag">🇧🇩</span> Heritage of Bengal</a>
+      </div>
+      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/bangladesh-history/">Home</a></li>
+          <li><a href="/bangladesh-history/places">Places</a></li>
+          <li><a href="/bangladesh-history/about">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="place-hero">
+      <div class="container">
+        <div class="breadcrumb">
+          <a href="/bangladesh-history/">Home</a> / <a href="/bangladesh-history/places">Places</a> / Mahasthangarh
+        </div>
+        <h1>Mahasthangarh</h1>
+        <div class="bn-name">মহাস্থানগড় &middot; The Ancient Citadel</div>
+        <div class="place-meta">
+          <div class="meta-item">
+            <span class="meta-label">Location</span>
+            <span class="meta-value">Bogura, Rajshahi</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Period</span>
+            <span class="meta-value">3rd Century BCE - 18th Century</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Builders</span>
+            <span class="meta-value">Maurya, Gupta, Pala, Sena Dynasties</span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">Status</span>
+            <span class="meta-value">National Heritage</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="place-content">
+      <div class="container">
+        <div class="content-grid">
+          <div class="main-text">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/71/Mahasthangarh_2%2C_Bogra_Bangladesh_%28cropped%29.jpg/1280px-Mahasthangarh_2%2C_Bogra_Bangladesh_%28cropped%29.jpg" alt="Mahasthangarh" style="width: 100%; border-radius: var(--radius-md); margin-bottom: 24px;">
+            <h2>Overview</h2>
+            <p>Mahasthangarh is the oldest archaeological site in Bangladesh, with a history spanning over 2,200 years. Located in Bogura district, this ancient citadel was once the capital of the Pundra Kingdom and remained continuously inhabited from the Mauryan period through the medieval era.</p>
+
+            <p>The site was known in ancient times as <em>Pundranagara</em> or <em>Pundravardhana</em>, the capital of the Pundra people mentioned in ancient Hindu texts. The name Mahasthangarh means "the fort of the great place" and was given to the site in the medieval period.</p>
+
+            <h2>The Citadel</h2>
+            <p>The main citadel is an irregularly shaped fortified area measuring approximately 1,525 meters by 1,370 meters, surrounded by massive ramparts. The walls rise to a height of up to 15 meters in some places and are made of brick and earth. The citadel was strategically located on the banks of the Karatoya River, which provided natural defense.</p>
+
+            <p>Excavations have revealed multiple layers of occupation, from the 3rd century BCE to the 18th century CE. Archaeologists have unearthed structures, streets, and artifacts from the Maurya, Gupta, Pala, and Sena periods, demonstrating the site's continuous importance as an urban center.</p>
+
+            <h2>Key Discoveries</h2>
+            <p><strong>Bairagir Bhita:</strong> A temple complex dating to the Gupta period (4th-5th century CE), featuring a brick platform and decorative terracotta plaques.</p>
+
+            <p><strong>Khodar Pathar Bhita:</strong> A medieval period structure, possibly a royal palace or administrative building, with massive brick foundations.</p>
+
+            <p><strong>Mankalir Kunda:</strong> A sacred water tank still used by local devotees, believed to have healing properties. The tank is surrounded by ancient steps and shrines.</p>
+
+            <p><strong>Govinda Bhita:</strong> A Vishnu temple site from the Gupta period, where a famous inscription of the Gupta emperor Chandragupta II was discovered.</p>
+
+            <p><strong>The Mahasthangarh Stone Inscription:</strong> One of the most important epigraphic discoveries in Bangladesh, dating to the 3rd century BCE. The inscription, written in Brahmi script, provides evidence of the site's ancient name as Pundranagara.</p>
+
+            <h2>Museum</h2>
+            <p>The site museum houses artifacts from the various periods of occupation, including terracotta plaques, pottery, beads, coins, sculptures, and inscriptions. These artifacts provide a comprehensive picture of urban life in ancient Bengal.</p>
+          </div>
+
+          <aside>
+            <div class="info-card">
+              <h3>Quick Facts</h3>
+              <ul class="info-list">
+                <li><span class="label">Type</span> Ancient City</li>
+                <li><span class="label">Oldest</span> 3rd Century BCE</li>
+                <li><span class="label">Area</span> ~200 hectares</li>
+                <li><span class="label">Script</span> Brahmi</li>
+                <li><span class="label">River</span> Karatoya</li>
+                <li><span class="label">Dynasties</span> Maurya, Gupta, Pala, Sena</li>
+                <li><span class="label">Period</span> 2,200+ years</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <h3>🇧🇩 Heritage of Bengal</h3>
+          <p>A digital archive dedicated to preserving and showcasing the rich historical heritage of Bangladesh.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Places</h4>
+          <ul>
+            <li><a href="/bangladesh-history/place/shat-gombuj-mosque">Shat Gombuj Mosque</a></li>
+            <li><a href="/bangladesh-history/place/somapura-mahavihara">Somapura Mahavihara</a></li>
+            <li><a href="/bangladesh-history/place/lalbagh-fort">Lalbagh Fort</a></li>
+            <li><a href="/bangladesh-history/place/ahsan-manzil">Ahsan Manzil</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>More</h4>
+          <ul>
+            <li><a href="/bangladesh-history/place/mahasthangarh">Mahasthangarh</a></li>
+            <li><a href="/bangladesh-history/place/mainamati">Mainamati</a></li>
+            <li><a href="/bangladesh-history/place/kantajew-temple">Kantajew Temple</a></li>
+            <li><a href="/bangladesh-history/place/panam-city">Panam City</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Heritage of Bengal. Built with Aurora.</p>
+      </div>
+    </div>
+  </footer>
+
+  
+</body>
+</html>
