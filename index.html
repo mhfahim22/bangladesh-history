@@ -79,6 +79,7 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .header-inner {
+  position: relative;
   max-width: var(--max-width);
   margin: 0 auto;
   padding: 0 var(--gutter);
@@ -123,6 +124,10 @@ img { max-width: 100%; height: auto; display: block; }
   border-bottom-color: var(--tertiary);
 }
 
+.menu-checkbox {
+  display: none;
+}
+
 .menu-toggle {
   display: none;
   background: none;
@@ -131,6 +136,7 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 1.5rem;
   cursor: pointer;
   padding: 4px;
+  z-index: 20;
 }
 
 /* ── Hero Section ── */
@@ -665,21 +671,26 @@ img { max-width: 100%; height: auto; display: block; }
     padding: 64px 0 48px;
   }
 
-  .nav-links {
+  .menu-checkbox:not(:checked) ~ nav {
     display: none;
+  }
+
+  .menu-checkbox:checked ~ nav {
+    display: block;
     position: absolute;
     top: 72px;
     left: 0;
     right: 0;
     background: var(--primary);
+    box-shadow: var(--shadow-lg);
+    z-index: 10;
+  }
+
+  .nav-links {
+    display: flex;
     flex-direction: column;
     padding: 16px 24px;
     gap: 0;
-    box-shadow: var(--shadow-lg);
-  }
-
-  .nav-links.open {
-    display: flex;
   }
 
   .nav-links a {
@@ -740,7 +751,8 @@ img { max-width: 100%; height: auto; display: block; }
       <div class="site-title">
         <a href="/bangladesh-history/"><span class="flag">🇧🇩</span> Heritage of Bengal</a>
       </div>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">☰</button>
+      <input type="checkbox" id="menuToggle" class="menu-checkbox" aria-label="Toggle menu">
+      <label for="menuToggle" class="menu-toggle">☰</label>
       <nav>
         <ul class="nav-links" id="navLinks">
           <li><a href="/bangladesh-history/" class="active">Home</a></li>
