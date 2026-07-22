@@ -53,36 +53,36 @@ function main():
 
     server app
         route "GET" "/"
-            response.html(aurora_template_render("index", "{}"))
+            response.html(aurora_template_render("index", "{\"base\": \"\"}"))
 
         route "GET" "/places"
-            response.html(aurora_template_render("places", "{}"))
+            response.html(aurora_template_render("places", "{\"base\": \"\"}"))
 
         route "GET" "/place/shat-gombuj-mosque"
-            response.html(aurora_template_render("place_shatgombuj", "{}"))
+            response.html(aurora_template_render("place_shatgombuj", "{\"base\": \"\"}"))
 
         route "GET" "/place/somapura-mahavihara"
-            response.html(aurora_template_render("place_somapura", "{}"))
+            response.html(aurora_template_render("place_somapura", "{\"base\": \"\"}"))
 
         route "GET" "/place/lalbagh-fort"
-            response.html(aurora_template_render("place_lalbagh", "{}"))
+            response.html(aurora_template_render("place_lalbagh", "{\"base\": \"\"}"))
 
         route "GET" "/place/ahsan-manzil"
-            response.html(aurora_template_render("place_ahsan", "{}"))
+            response.html(aurora_template_render("place_ahsan", "{\"base\": \"\"}"))
 
         route "GET" "/place/mahasthangarh"
-            response.html(aurora_template_render("place_mahasthan", "{}"))
+            response.html(aurora_template_render("place_mahasthan", "{\"base\": \"\"}"))
 
         route "GET" "/place/mainamati"
-            response.html(aurora_template_render("place_mainamati", "{}"))
+            response.html(aurora_template_render("place_mainamati", "{\"base\": \"\"}"))
 
         route "GET" "/place/kantajew-temple"
-            response.html(aurora_template_render("place_kantajew", "{}"))
+            response.html(aurora_template_render("place_kantajew", "{\"base\": \"\"}"))
 
         route "GET" "/place/panam-city"
-            response.html(aurora_template_render("place_panam", "{}"))
+            response.html(aurora_template_render("place_panam", "{\"base\": \"\"}"))
 
         route "GET" "/about"
-            response.html(aurora_template_render("about", "{}"))
+            response.html(aurora_template_render("about", "{\"base\": \"\"}"))
 
 end

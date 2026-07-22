@@ -13,7 +13,7 @@ function build_page(template_name: str, template_file: str, output_path: str):
         outputln("  ERROR: Failed to compile " + template_file)
         return
     end
-    html = aurora_template_render(template_name, "{}")
+    html = aurora_template_render(template_name, "{\"base\": \"/bangladesh-history\"}")
     if len(html) == 0:
         outputln("  ERROR: Rendered empty for " + template_name)
         return
