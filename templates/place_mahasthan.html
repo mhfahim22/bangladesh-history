@@ -125,7 +125,11 @@ img { max-width: 100%; height: auto; display: block; }
 }
 
 .menu-checkbox {
-  display: none;
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
 }
 
 .menu-toggle {
@@ -133,7 +137,6 @@ img { max-width: 100%; height: auto; display: block; }
   background: none;
   border: none;
   color: var(--white);
-  font-size: 1.5rem;
   cursor: pointer;
   padding: 4px;
   z-index: 20;
@@ -699,7 +702,18 @@ img { max-width: 100%; height: auto; display: block; }
   }
 
   .menu-toggle {
-    display: block;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 28px;
+    padding: 12px;
+    z-index: 30;
+    min-width: 48px;
+    min-height: 48px;
   }
 
   .places-grid {
