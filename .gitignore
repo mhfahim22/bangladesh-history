@@ -13,6 +13,12 @@
 .vscode/
 *.swp
 
+# Build output
+output/
+
 # OS
 .DS_Store
 Thumbs.db
+
+# Allow Aurora compiler binary
+!bin/aurorac.exe

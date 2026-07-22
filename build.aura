@@ -1,0 +1,60 @@
+## Bangladesh Historical Places Portal
+## Static Site Builder — Aurora SSG
+
+extern function aurora_template_compile_from_file(name: str, filepath: str) -> i32
+extern function aurora_template_render(name: str, data: str) -> str
+extern function aurora_fs_write_file(path: str, content: str) -> i32
+extern function aurora_fs_mkdir(path: str) -> i32
+
+function build_page(template_name: str, template_file: str, output_path: str):
+    outputln("  Building " + output_path)
+    ret = aurora_template_compile_from_file(template_name, template_file)
+    if ret == 0:
+        outputln("  ERROR: Failed to compile " + template_file)
+        return
+    end
+    html = aurora_template_render(template_name, "{}")
+    if len(html) == 0:
+        outputln("  ERROR: Rendered empty for " + template_name)
+        return
+    end
+    ret = aurora_fs_write_file(output_path, html)
+    if ret == 0:
+        outputln("  ERROR: Failed to write " + output_path)
+        return
+    end
+    outputln("  OK " + template_file + " → " + output_path)
+end
+
+function main():
+    outputln("Bangladesh History — Static Site Generator")
+    outputln("Building static site...")
+
+    aurora_fs_mkdir("output")
+    aurora_fs_mkdir("output/places")
+    aurora_fs_mkdir("output/about")
+    aurora_fs_mkdir("output/place")
+    aurora_fs_mkdir("output/place/shat-gombuj-mosque")
+    aurora_fs_mkdir("output/place/somapura-mahavihara")
+    aurora_fs_mkdir("output/place/lalbagh-fort")
+    aurora_fs_mkdir("output/place/ahsan-manzil")
+    aurora_fs_mkdir("output/place/mahasthangarh")
+    aurora_fs_mkdir("output/place/mainamati")
+    aurora_fs_mkdir("output/place/kantajew-temple")
+    aurora_fs_mkdir("output/place/panam-city")
+    outputln("Directories created")
+
+    build_page("index", "templates/index.html", "output/index.html")
+    build_page("places", "templates/places.html", "output/places/index.html")
+    build_page("about", "templates/about.html", "output/about/index.html")
+    build_page("place_shatgombuj", "templates/place_shatgombuj.html", "output/place/shat-gombuj-mosque/index.html")
+    build_page("place_somapura", "templates/place_somapura.html", "output/place/somapura-mahavihara/index.html")
+    build_page("place_lalbagh", "templates/place_lalbagh.html", "output/place/lalbagh-fort/index.html")
+    build_page("place_ahsan", "templates/place_ahsan.html", "output/place/ahsan-manzil/index.html")
+    build_page("place_mahasthan", "templates/place_mahasthan.html", "output/place/mahasthangarh/index.html")
+    build_page("place_mainamati", "templates/place_mainamati.html", "output/place/mainamati/index.html")
+    build_page("place_kantajew", "templates/place_kantajew.html", "output/place/kantajew-temple/index.html")
+    build_page("place_panam", "templates/place_panam.html", "output/place/panam-city/index.html")
+
+    outputln("Done! 12 pages built.")
+end
